@@ -1,0 +1,87 @@
+seed: 42
+seeds_all: [42, 123, 2024]
+
+transformer_model: distilbert-base-uncased
+image_encoder: resnet50
+cnn_kernels: [3, 5, 7]
+cnn_filters: 128
+projection_dim: 512
+gate_hidden_dim: 256
+task_embedding_dim: 64
+num_tasks: 3
+dropout: 0.1
+
+max_seq_len: 128
+image_size: 224
+ocr_confidence_threshold: 0.6
+ocr_min_tokens: 3
+num_workers: 2
+
+mixed_precision: true
+gradient_accumulation_steps: 4
+gradient_checkpointing: true
+pin_memory: true
+empty_cache_every_n_steps: 50
+log_gpu_memory: true
+
+freeze_distilbert_layers: 4
+freeze_resnet_layers: 2
+
+stage1:
+  epochs: 5
+  batch_size: 16
+  learning_rate: 2.0e-5
+  warmup_steps: 200
+  scheduler: linear_decay_with_warmup
+  optimizer: AdamW
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  freeze_image_encoder: true
+  freeze_cross_modal_gate: true
+  freeze_distilbert_layers: 4
+
+stage2:
+  epochs: 5
+  batch_size: 8
+  learning_rate: 1.0e-5
+  warmup_steps: 100
+  scheduler: linear_decay_with_warmup
+  optimizer: AdamW
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  freeze_image_encoder: false
+  freeze_resnet_layers: 2
+  freeze_cross_modal_gate: true
+  freeze_distilbert_layers: 4
+
+stage3:
+  epochs: 5
+  batch_size: 8
+  learning_rate: 5.0e-6
+  warmup_steps: 100
+  scheduler: linear_decay_with_warmup
+  optimizer: AdamW
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  freeze_image_encoder: false
+  freeze_resnet_layers: 0
+  freeze_cross_modal_gate: false
+  freeze_distilbert_layers: 0
+  gate_reg_lambda: 0.1
+
+lambda_fake_news: 1.0
+lambda_sentiment: 0.8
+lambda_harmful: 1.2
+focal_loss_gamma: 2.0
+
+gate_reg_lambda: 0.1
+gate_reg_type: entropy
+
+use_wandb: true
+wandb_project: multimodal-taskgate
+wandb_entity: null
+
+data_root: ./datasets
+checkpoint_dir: ./checkpoints
+results_dir: ./results
+log_dir: ./logs

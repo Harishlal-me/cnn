@@ -1,0 +1,52 @@
+Phase 3 - Curriculum Training
+Files created: training/train_curriculum.py
+
+Tests executed & Outputs:
+
+--- Running training.train_curriculum ---
+Loading curriculum config...
+Using device: cpu
+
+--- Setting up stage1 ---
+Epochs: 5
+Batch Size: 16
+LR: 2e-05
+Requires Grad Check for stage1:
+- Image Encoder: FROZEN
+- Cross Modal Gate: FROZEN
+- DistilBERT Frozen Layers: 4
+- Optimizer bounds validated.
+
+--- Setting up stage2 ---
+Epochs: 5
+Batch Size: 8
+LR: 1e-05
+Requires Grad Check for stage2:
+- Image Encoder: ACTIVE (ResNet Layers frozen: 2 )
+- Cross Modal Gate: FROZEN
+- DistilBERT Frozen Layers: 4
+- Optimizer bounds validated.
+
+--- Setting up stage3 ---
+Epochs: 5
+Batch Size: 8
+LR: 5e-06
+Requires Grad Check for stage3:
+- Image Encoder: ACTIVE (ResNet Layers frozen: 0 )
+- Cross Modal Gate: ACTIVE
+- DistilBERT Frozen Layers: 0
+- Optimizer bounds validated.
+
+[OK] Curriculum 3-stage training script generated.
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\hub.py:123: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\huggingface_hub\file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+Next phase: Phase 4 - Evaluation & Baselines

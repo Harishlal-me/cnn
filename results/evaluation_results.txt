@@ -1,0 +1,18 @@
+MultiModal TaskGate — Evaluation Results
+==================================================
+
+Fake News: No samples
+
+Sentiment (1186 samples)
+  Accuracy  : 0.5826
+  Precision : 0.5606
+  Recall    : 0.5479
+  F1 Score  : 0.5534
+
+Harmful Content (3165 samples)
+  Accuracy  : 0.7248
+  Precision : 0.7071
+  Recall    : 0.7485
+  F1 Score  : 0.7272
+
+Macro F1: 0.6403

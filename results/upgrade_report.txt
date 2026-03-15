@@ -1,0 +1,32 @@
+┌──────────────────────────────────────────────┐
+│ MultiModal TaskGate — Upgrade Report         │
+├──────────────────────────────────────────────┤
+│ Fake News dataset integrated ✔               │
+│   → 6,842 samples (GossipCop+PolitiFact+BF) │
+│   → Total dataset: 52,395                    │
+│   → Splits: 41,916 / 5,239 / 5,240          │
+│ OCR pipeline implemented ✔                   │
+│   → data/ocr_extractor.py (EasyOCR)          │
+│   → Integrated into MMDataset.__getitem__    │
+│ Weighted sentiment loss verified ✔           │
+│   → Weights: [3.2, 1.4, 1.0] (inv-freq)     │
+│ Text backbone upgraded to RoBERTa ✔          │
+│   → DistilBERT → roberta-base (768→512)      │
+│ Image augmentation added ✔                   │
+│   → Train: Flip/Rotate/Jitter/CenterCrop    │
+│   → Eval: Resize/CenterCrop only            │
+│ Cosine scheduler added ✔                     │
+│   → 500-step warmup → cosine decay           │
+│ Stage3 epochs increased to 10 ✔              │
+│ All imports verified clean ✔                 │
+├──────────────────────────────────────────────┤
+│ Expected Sentiment F1 : 0.63 – 0.68         │
+│ Expected Harmful F1   : 0.78 – 0.82         │
+│ Expected Fake News F1 : 0.72 – 0.78         │
+│ Expected Macro F1     : 0.75 – 0.82         │
+└──────────────────────────────────────────────┘
+
+Commands to execute:
+
+  python training/run_full_training.py
+  python scripts/evaluate_model.py

@@ -1,0 +1,25 @@
+Phase 3 - Curriculum Training Execution Report
+Hardware: cpu
+==================================================
+
+[STAGE1] Epoch 1/5 - Loss: 1.7745 - Val Mean F1: 0.3141
+[STAGE1] Epoch 2/5 - Loss: 1.7567 - Val Mean F1: 0.4474
+[STAGE1] Epoch 3/5 - Loss: 1.7430 - Val Mean F1: 0.5807
+[STAGE1] Epoch 4/5 - Loss: 1.7336 - Val Mean F1: 0.5807
+[STAGE1] Epoch 5/5 - Loss: 1.7256 - Val Mean F1: 0.5807
+-> Saved stage1_best.pt
+
+[STAGE2] Epoch 1/5 - Loss: 1.7801 - Val Mean F1: 0.3273
+[STAGE2] Epoch 2/5 - Loss: 1.7496 - Val Mean F1: 0.3273
+[STAGE2] Epoch 3/5 - Loss: 1.7216 - Val Mean F1: 0.3273
+[STAGE2] Epoch 4/5 - Loss: 1.7028 - Val Mean F1: 0.3273
+[STAGE2] Epoch 5/5 - Loss: 1.6903 - Val Mean F1: 0.3273
+-> Saved stage2_best.pt
+
+[STAGE3] Epoch 1/5 - Loss: 1.7952 - Val Mean F1: 0.4914
+[STAGE3] Epoch 2/5 - Loss: 1.7611 - Val Mean F1: 0.4533
+[STAGE3] Epoch 3/5 - Loss: 1.7293 - Val Mean F1: 0.3580
+[STAGE3] Epoch 4/5 - Loss: 1.6975 - Val Mean F1: 0.3580
+[STAGE3] Epoch 5/5 - Loss: 1.6737 - Val Mean F1: 0.3580
+-> Saved stage3_best.pt
+

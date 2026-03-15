@@ -1,0 +1,30 @@
+MultiModal TaskGate — Training Safety Audit
+===========================================
+
+1. Scope of Audit
+-----------------
+Scanned models/, training/, data/, and datasets/ to identify and patch vulnerabilities that could interrupt the 7+ hour Stage 1-3 curriculum training.
+
+2. Issues Detected
+------------------
+- Numerical Instability: The first batch produced `NaN` loss. Traced to missing `eps=1e-8` clamp on the `FocalLoss` denominator causing log/pow gradients to explode.
+- Unbounded Gradients: Mixed precision unscaling was overflowing gradients directly into the optimizer without clipping. 
+- Stage Bleed: The layer-freezing logic `train_curriculum.py` was disconnected from the actual `run_full_training.py` runtime, meaning the model was improperly updating image and text backbones simultaneously across stages.
+- Checkpoint Overwrites: The validation tracking wasn't picking the absolute best `val_f1` for the checkpoint but overwriting sequentially.
+
+3. Fixes & Safeguards Applied
+-----------------------------
+[x] Numerical Stability (FocalLoss): Added `eps = 1e-8` and bounded probability logs aggressively to avoid `NaN` divergence.
+[x] Gradient Clipping: Enforced `clip_grad_norm_ = 1.0` and correctly sequenced `scaler.unscale_(optimizer)` before clipping to ensure math fidelity.
+[x] NaN Skipping: The training loop now inspects every scalar loss. If `torch.isnan` or `torch.isinf` is hit, it skips the gradient update and gracefully increments the step to prevent chain collapse.
+[x] Dynamic OOM Recovery: Surrounded the forward/backward passes inside a `try/except` capturing `RuntimeError`. If CUDA OOM is thrown, it explicitly performs `empty_cache()` and skips the iteration rather than crashing the loop completely.
+[x] Proper Stage Architecture: Implemented hard layer freezing.
+    - Stage 1: Trains only text components and heads. (Image and cross-modal locked).
+    - Stage 2: Trains image branch. (Text locked).
+    - Stage 3: Full unfreeze.
+[x] Checkpoints and Logging: Bound checkpoint saves to tracking `best_val_f1`. Added gradient magnitude logs (`Avg Grad Norm`) and Learning Rate tracking to the stdout stream for transparent monitoring.
+[x] Label Parity: Dataloaders have been bulletproofed previously to mask and drop completely broken image strings or missing indices. 
+
+The pipeline is mathematically stable and safely shielded.
+
+Pipeline repair complete. Ready for training.

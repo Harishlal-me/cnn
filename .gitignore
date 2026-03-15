@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch checkpoints
+*.pt
+*.pth
+checkpoints/
+
+# Datasets / Large files
+datasets/
+*.csv
+*.zip
+
+# Virtual Environment
+.venv/
+env/
+venv/
+ENV/
+
+# IDE files
+.vscode/
+.idea/

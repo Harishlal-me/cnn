@@ -1,0 +1,50 @@
+Phase 1 - Build the Model
+Files created: models/multiscale_cnn.py, models/transformer_branch.py, models/token_gate.py, models/task_gate.py, models/image_encoder.py, models/cross_modal_gate.py, models/task_heads.py, models/mm_taskgate.py
+
+Tests executed & Outputs:
+
+--- Running models.multiscale_cnn ---
+[OK] MultiScaleCNN OK
+
+--- Running models.transformer_branch ---
+[OK] TransformerBranch OK
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\hub.py:123: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\huggingface_hub\file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+--- Running models.token_gate ---
+[OK] TokenGate OK
+
+--- Running models.task_gate ---
+[OK] TaskGate OK
+
+--- Running models.image_encoder ---
+[OK] ImageEncoder OK
+
+--- Running models.cross_modal_gate ---
+[OK] CrossModalGate OK
+
+--- Running models.task_heads ---
+[OK] TaskHeads OK
+
+--- Running models.mm_taskgate ---
+[OK] Full MMTaskGate forward pass OK
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\hub.py:123: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\huggingface_hub\file_download.py:942: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+
+Next phase: Phase 2 - Build the Training Pipeline

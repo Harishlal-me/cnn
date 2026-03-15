@@ -1,0 +1,31 @@
+Phase 3.5 - Training Setup Report
+=================================
+
+Hardware & Environment
+----------------------
+GPU Detected: NVIDIA RTX 4050 Laptop GPU
+VRAM: 6.0 GB
+Mixed Precision (AMP): Enabled
+Fallback to CPU: Disabled (Strict Exception Triggered)
+
+Dataset Information
+-------------------
+Master Index: dataset_index.csv
+Total Dataset Size: 45,553 samples
+Train Split (80%): 36,442 samples
+Validation Split (10%): 4,555 samples
+Test Split (10%): 4,556 samples
+
+Training Configuration
+----------------------
+Batch Size: 16
+Loader Strategy: Shuffled, Dropped Last
+Workers: 2
+Mixed Precision: Enabled
+
+Expected Runtime
+----------------
+Platform: RTX 4050 GPU (6 GB)
+Batches per epoch: ~2277
+Estimated Time Per Stage: 2.5 Hours
+Estimated Total Time (15 Epochs): 7.5 Hours

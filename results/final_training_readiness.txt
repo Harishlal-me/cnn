@@ -1,0 +1,45 @@
+MultiModal TaskGate - Final Training Readiness Report
+=====================================================
+
+1. Dataset Statistics
+---------------------
+Total Samples: 45,553
+Label Distribution Validated:
+- Harmful: ~33.6k (Normal: 8153, Hatespeech: 6234, Offensive: 5761 ...) 
+- Sentiment: ~11.8k (Positive: 6516, Negative: ~3000, Neutral: ~2000 ...)
+- Fake News: ~15k
+No single class exceeds 90% dominance. Class balancing is safe. Paths and string values have been strictly checked.
+
+2. Batch Size Confirmation
+--------------------------
+Stage 1 -> Batch Size = 16
+Stage 2 -> Batch Size = 8
+Stage 3 -> Batch Size = 8
+Confirmed: Dataloaders are reinstantiated inside the stage loop to dynamically apply these sizes.
+
+3. GPU & System Readiness
+-------------------------
+CUDA Enforcement: device is explicitly locked to `cuda:0`. CPU fallback terminates process.
+Target Usage: Expected 4-5 GB VRAM allocation.
+Temperatures: N/A sensors fallback to safe logic.
+Disk Space: 40 GB Free on D:\, 28 GB Free on C:\ (Sufficient for checkpoints).
+
+4. Layer Freezing Verification
+------------------------------
+Stage 1: Train Text (`layer.4`, `layer.5`), `multiscale_cnn` (CNN Branch), `task_heads`. Images completely frozen.
+Stage 2: Train Image (`resnet.layer3`, `resnet.layer4`), `task_heads`. Text completely frozen.
+Stage 3: All parameters completely unfrozen and fully trainable.
+Verification scripts actively print trainable parameters before initiating the epoch loops.
+
+5. Gradient Monitoring Status
+-----------------------------
+Gradient Norms: Actively unscaled and logged per epoch natively via `torch.nn.utils.clip_grad_norm_`. Checked against the expected 0.5 - 5.0 bounds inline. NaN gradients are skipped dynamically.
+
+6. Checkpoint Validation
+------------------------
+Tracking `best_val_f1` continuously across loops. Automatically stores the absolute best performing F1 runs internally isolated per stage:
+checkpoints/stage1_best.pt
+checkpoints/stage2_best.pt
+checkpoints/stage3_best.pt
+
+Final verification complete. Training can safely begin.

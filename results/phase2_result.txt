@@ -1,0 +1,23 @@
+Phase 2 - Build the Training Pipeline
+Files created: training/losses.py, training/train.py, training/evaluate.py, config.yaml
+
+Tests executed & Outputs:
+
+--- Running training.losses ---
+[OK] Losses OK. Total Loss: 2.227381467819214
+
+--- Running training.evaluate ---
+[OK] Evaluate Metric functions OK
+
+--- Running training.train ---
+[OK] Train file setup completed.
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\hub.py:123: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+C:\Users\HARISHLAL'S PC\AppData\Local\Programs\Python\Python39\lib\site-packages\transformers\utils\generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+
+Next phase: Phase 3 - Curriculum Training
